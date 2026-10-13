@@ -1,98 +1,124 @@
-import * as Device from 'expo-device';
-import { Platform, StyleSheet } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { useState } from 'react';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 
-import { AnimatedIcon } from '@/components/animated-icon';
-import { HintRow } from '@/components/hint-row';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { WebBadge } from '@/components/web-badge';
-import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
+import {
+  Card,
+  FontSize,
+  GestionReclamosScreen,
+  Icon,
+  NuevaSalidaScreen,
+  Palette,
+  Radius,
+  RegistrarIncidenteScreen,
+  RegistrarUsuarioScreen,
+  ScreenBody,
+  ScreenHeader,
+  ScreenShell,
+  Spacing,
+  type IconName,
+} from '@/components';
 
-function getDevMenuHint() {
-  if (Platform.OS === 'web') {
-    return <ThemedText type="small">use browser devtools</ThemedText>;
-  }
-  if (Device.isDevice) {
-    return (
-      <ThemedText type="small">
-        shake device or press <ThemedText type="code">m</ThemedText> in terminal
-      </ThemedText>
-    );
-  }
-  const shortcut = Platform.OS === 'android' ? 'cmd+m (or ctrl+m)' : 'cmd+d';
+type ScreenKey = 'nueva-salida' | 'registrar-usuario' | 'gestion-reclamos' | 'registrar-incidente';
+
+type MenuItem = {
+  key: ScreenKey;
+  title: string;
+  description: string;
+  icon: IconName;
+};
+
+const MENU: MenuItem[] = [
+  {
+    key: 'nueva-salida',
+    title: 'Nueva Salida',
+    description: 'Registrar la salida de un camión desde planta',
+    icon: 'truck',
+  },
+  {
+    key: 'gestion-reclamos',
+    title: 'Gestión de Reclamos',
+    description: 'Atender y dar seguimiento a reclamos de clientes',
+    icon: 'list',
+  },
+  {
+    key: 'registrar-incidente',
+    title: 'Registrar Incidente',
+    description: 'Reportar novedades ocurridas en ruta',
+    icon: 'alert',
+  },
+  {
+    key: 'registrar-usuario',
+    title: 'Registrar Usuario',
+    description: 'Crear cuentas y asignar roles del sistema',
+    icon: 'userPlus',
+  },
+];
+
+export default function Index() {
+  const [screen, setScreen] = useState<ScreenKey | null>(null);
+  const goHome = () => setScreen(null);
+
+  if (screen === 'nueva-salida') return <NuevaSalidaScreen onBack={goHome} />;
+  if (screen === 'registrar-usuario') return <RegistrarUsuarioScreen onBack={goHome} />;
+  if (screen === 'gestion-reclamos') return <GestionReclamosScreen onBack={goHome} />;
+  if (screen === 'registrar-incidente') return <RegistrarIncidenteScreen onBack={goHome} />;
+
   return (
-    <ThemedText type="small">
-      press <ThemedText type="code">{shortcut}</ThemedText>
-    </ThemedText>
-  );
-}
+    <ScreenShell>
+      <ScreenHeader title="Sistema de Garrafas" subtitle="Panel de gestión de distribución" />
 
-export default function HomeScreen() {
-  return (
-    <ThemedView style={styles.container}>
-      <SafeAreaView style={styles.safeArea}>
-        <ThemedView style={styles.heroSection}>
-          <AnimatedIcon />
-          <ThemedText type="title" style={styles.title}>
-            Welcome to&nbsp;Expo
-          </ThemedText>
-        </ThemedView>
-
-        <ThemedText type="code" style={styles.code}>
-          get started
-        </ThemedText>
-
-        <ThemedView type="backgroundElement" style={styles.stepContainer}>
-          <HintRow
-            title="Try editing"
-            hint={<ThemedText type="code">src/app/index.tsx</ThemedText>}
-          />
-          <HintRow title="Dev tools" hint={getDevMenuHint()} />
-          <HintRow
-            title="Fresh start"
-            hint={<ThemedText type="code">npm run reset-project</ThemedText>}
-          />
-        </ThemedView>
-
-        {Platform.OS === 'web' && <WebBadge />}
-      </SafeAreaView>
-    </ThemedView>
+      <ScreenBody>
+        {MENU.map((item) => (
+          <Pressable
+            key={item.key}
+            accessibilityRole="button"
+            onPress={() => setScreen(item.key)}
+            style={({ pressed }) => (pressed ? styles.pressed : undefined)}>
+            <Card style={styles.menuCard}>
+              <View style={styles.menuIcon}>
+                <Icon name={item.icon} size={22} color={Palette.primary} />
+              </View>
+              <View style={styles.menuText}>
+                <Text style={styles.menuTitle}>{item.title}</Text>
+                <Text style={styles.menuDescription}>{item.description}</Text>
+              </View>
+              <Icon name="chevronRight" size={18} color={Palette.textMuted} />
+            </Card>
+          </Pressable>
+        ))}
+      </ScreenBody>
+    </ScreenShell>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
+  menuCard: {
     flexDirection: 'row',
-  },
-  safeArea: {
-    flex: 1,
-    paddingHorizontal: Spacing.four,
     alignItems: 'center',
-    gap: Spacing.three,
-    paddingBottom: BottomTabInset + Spacing.three,
-    maxWidth: MaxContentWidth,
+    gap: Spacing.md,
   },
-  heroSection: {
+  menuIcon: {
+    width: 44,
+    height: 44,
+    borderRadius: Radius.md,
+    backgroundColor: Palette.primarySoft,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  menuText: {
     flex: 1,
-    paddingHorizontal: Spacing.four,
-    gap: Spacing.four,
+    gap: 2,
   },
-  title: {
-    textAlign: 'center',
+  menuTitle: {
+    fontSize: FontSize.body,
+    fontWeight: '700',
+    color: Palette.textPrimary,
   },
-  code: {
-    textTransform: 'uppercase',
+  menuDescription: {
+    fontSize: FontSize.small,
+    color: Palette.textSecondary,
   },
-  stepContainer: {
-    gap: Spacing.three,
-    alignSelf: 'stretch',
-    paddingHorizontal: Spacing.three,
-    paddingVertical: Spacing.four,
-    borderRadius: Spacing.four,
+  pressed: {
+    opacity: 0.7,
   },
 });

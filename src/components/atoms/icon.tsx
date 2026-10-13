@@ -17,6 +17,7 @@ export type IconName =
   | 'eye'
   | 'eyeOff'
   | 'chevronDown'
+  | 'chevronRight'
   | 'check'
   | 'checkCircle'
   | 'plus'
@@ -36,6 +37,7 @@ const ICONS: Record<IconName, { ios: string; android: string; web: string }> = {
   eye: { ios: 'eye', android: 'visibility', web: 'visibility' },
   eyeOff: { ios: 'eye.slash', android: 'visibility_off', web: 'visibility_off' },
   chevronDown: { ios: 'chevron.down', android: 'expand_more', web: 'expand_more' },
+  chevronRight: { ios: 'chevron.right', android: 'chevron_right', web: 'chevron_right' },
   check: { ios: 'checkmark', android: 'check', web: 'check' },
   checkCircle: { ios: 'checkmark.circle.fill', android: 'check_circle', web: 'check_circle' },
   plus: { ios: 'plus', android: 'add', web: 'add' },

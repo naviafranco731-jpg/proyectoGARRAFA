@@ -32,7 +32,7 @@ const RUTAS = [
   { label: 'Ruta 3 · Pedidos especiales', value: 'ruta-3' },
 ];
 
-export function NuevaSalidaScreen() {
+export function NuevaSalidaScreen({ onBack }: { onBack?: () => void }) {
   const [placa, setPlaca] = useState('');
   const [conductor, setConductor] = useState('');
   const [zona, setZona] = useState('');
@@ -49,7 +49,7 @@ export function NuevaSalidaScreen() {
       <ScreenHeader
         title="Nueva Salida"
         subtitle="Registra la salida de un vehículo desde planta"
-        onBack={() => {}}
+        onBack={onBack}
       />
 
       <ScreenBody>

@@ -14,7 +14,7 @@ const ROLES = [
   { label: 'Atención al cliente', value: 'atencion' },
 ];
 
-export function RegistrarUsuarioScreen() {
+export function RegistrarUsuarioScreen({ onBack }: { onBack?: () => void }) {
   const [nombre, setNombre] = useState('');
   const [cedula, setCedula] = useState('');
   const [telefono, setTelefono] = useState('');
@@ -28,7 +28,7 @@ export function RegistrarUsuarioScreen() {
       <ScreenHeader
         title="Registrar Usuario"
         subtitle="Crea una cuenta y asigna sus permisos"
-        onBack={() => {}}
+        onBack={onBack}
       />
 
       <ScreenBody>

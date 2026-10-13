@@ -33,7 +33,7 @@ const PRIORIDADES = [
   { label: 'Baja', value: 'baja' },
 ];
 
-export function RegistrarIncidenteScreen() {
+export function RegistrarIncidenteScreen({ onBack }: { onBack?: () => void }) {
   const [tipo, setTipo] = useState('');
   const [camion, setCamion] = useState('');
   const [conductor, setConductor] = useState('');
@@ -45,7 +45,7 @@ export function RegistrarIncidenteScreen() {
       <ScreenHeader
         title="Registrar Incidente"
         subtitle="Reportar novedad en ruta"
-        onBack={() => {}}
+        onBack={onBack}
       />
 
       <ScreenBody>

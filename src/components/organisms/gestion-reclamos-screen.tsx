@@ -78,7 +78,7 @@ function matchesFilter(reclamo: Reclamo, filter: FilterKey) {
   return true;
 }
 
-export function GestionReclamosScreen() {
+export function GestionReclamosScreen({ onBack }: { onBack?: () => void }) {
   const [filter, setFilter] = useState<FilterKey>('todos');
   const [navActive, setNavActive] = useState<'inicio' | 'camiones' | 'rutas' | 'garrafas' | 'mas'>(
     'mas',
@@ -106,7 +106,11 @@ export function GestionReclamosScreen() {
 
   return (
     <ScreenShell>
-      <ScreenHeader title="Gestión de Reclamos" subtitle="Atención al cliente" />
+      <ScreenHeader
+        title="Gestión de Reclamos"
+        subtitle="Atención al cliente"
+        onBack={onBack}
+      />
 
       <View style={styles.tabsWrapper}>
         <FilterTabs items={tabs} value={filter} onChange={setFilter} />
