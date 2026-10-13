@@ -2,7 +2,7 @@ import { type ReactNode } from 'react';
 import { ScrollView, StyleSheet, View, type StyleProp, type ViewStyle } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { ContentMaxWidth, Palette, Radius, Spacing } from './theme';
+import { ContentMaxWidth, Palette, Radius, Spacing } from '../atoms/theme';
 
 export type ScreenShellProps = {
   children: ReactNode;

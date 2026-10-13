@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { Modal, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
-import { Icon } from './icon';
-import { fieldStyles as f } from './styles';
-import { FontSize, ModalShadow, Palette, Radius, Spacing } from './theme';
+import { Icon } from '../atoms/icon';
+import { fieldStyles as f } from '../atoms/styles';
+import { FontSize, ModalShadow, Palette, Radius, Spacing } from '../atoms/theme';
 
 export type SelectOption = {
   label: string;

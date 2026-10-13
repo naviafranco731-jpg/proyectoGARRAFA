@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { StyleSheet } from 'react-native';
 
-import { BottomNav } from '../bottom-nav';
-import { ButtonGroup, OutlineButton, PrimaryButton } from '../button';
-import { NumberField, TextAreaField, TimeField } from '../field';
-import { Card, ScreenBody, ScreenShell } from '../screen';
-import { ScreenHeader } from '../screen-header';
-import { SelectField } from '../select-field';
+import { ButtonGroup, OutlineButton, PrimaryButton } from '../atoms/button';
+import { NumberField, TextAreaField, TimeField } from '../molecules/field';
+import { BottomNav } from '../molecules/bottom-nav';
+import { Card, ScreenBody, ScreenShell } from '../molecules/screen';
+import { ScreenHeader } from '../molecules/screen-header';
+import { SelectField } from '../molecules/select-field';
 
 const PLACAS = [
   { label: 'ABC-1234 · Camión 1', value: 'abc-1234' },

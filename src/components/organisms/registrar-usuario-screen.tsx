@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { StyleSheet } from 'react-native';
 
-import { ButtonGroup, OutlineButton, PrimaryButton } from '../button';
-import { PasswordField, SwitchField, TextField } from '../field';
-import { Card, ScreenBody, ScreenShell } from '../screen';
-import { ScreenHeader } from '../screen-header';
-import { SelectField } from '../select-field';
+import { ButtonGroup, OutlineButton, PrimaryButton } from '../atoms/button';
+import { PasswordField, SwitchField, TextField } from '../molecules/field';
+import { Card, ScreenBody, ScreenShell } from '../molecules/screen';
+import { ScreenHeader } from '../molecules/screen-header';
+import { SelectField } from '../molecules/select-field';
 
 const ROLES = [
   { label: 'Administrador', value: 'admin' },

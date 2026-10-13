@@ -1,8 +1,8 @@
 import { type ReactNode } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
-import { Icon } from './icon';
-import { FontSize, Palette, Radius, Spacing } from './theme';
+import { Icon } from '../atoms/icon';
+import { FontSize, Palette, Radius, Spacing } from '../atoms/theme';
 
 export type ScreenHeaderProps = {
   title: string;

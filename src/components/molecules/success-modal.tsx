@@ -1,8 +1,8 @@
 import { Modal, StyleSheet, Text, View } from 'react-native';
 
-import { PrimaryButton } from './button';
-import { Icon } from './icon';
-import { FontSize, ModalShadow, Palette, Radius, Spacing } from './theme';
+import { PrimaryButton } from '../atoms/button';
+import { Icon } from '../atoms/icon';
+import { FontSize, ModalShadow, Palette, Radius, Spacing } from '../atoms/theme';
 
 export type SuccessModalProps = {
   visible: boolean;

@@ -1,14 +1,14 @@
 import { useMemo, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import { StatusBadge } from '../badge';
-import { BottomNav } from '../bottom-nav';
-import { PrimaryButton } from '../button';
-import { FilterTabs, type FilterTabItem } from '../filter-tabs';
-import { Card, ScreenBody, ScreenShell } from '../screen';
-import { ScreenHeader } from '../screen-header';
-import { SuccessModal } from '../success-modal';
-import { FontSize, Palette, Spacing, type BadgeTone } from '../theme';
+import { StatusBadge } from '../atoms/badge';
+import { PrimaryButton } from '../atoms/button';
+import { FontSize, Palette, Spacing, type BadgeTone } from '../atoms/theme';
+import { BottomNav } from '../molecules/bottom-nav';
+import { FilterTabs, type FilterTabItem } from '../molecules/filter-tabs';
+import { Card, ScreenBody, ScreenShell } from '../molecules/screen';
+import { ScreenHeader } from '../molecules/screen-header';
+import { SuccessModal } from '../molecules/success-modal';
 
 type ReclamoEstado = BadgeTone;
 

@@ -9,9 +9,9 @@ import {
   type TextInputProps,
 } from 'react-native';
 
-import { Icon, type IconName } from './icon';
-import { fieldStyles as f } from './styles';
-import { FontSize, Palette, Spacing } from './theme';
+import { Icon, type IconName } from '../atoms/icon';
+import { fieldStyles as f } from '../atoms/styles';
+import { FontSize, Palette, Spacing } from '../atoms/theme';
 
 type BaseFieldProps = TextInputProps & {
   label?: string;

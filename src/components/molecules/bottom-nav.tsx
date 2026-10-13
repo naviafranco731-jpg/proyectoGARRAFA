@@ -1,8 +1,8 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { Icon, type IconName } from './icon';
-import { FontSize, Palette, Spacing } from './theme';
+import { Icon, type IconName } from '../atoms/icon';
+import { FontSize, Palette, Spacing } from '../atoms/theme';
 
 export type BottomNavKey = 'inicio' | 'camiones' | 'rutas' | 'garrafas' | 'mas';
 

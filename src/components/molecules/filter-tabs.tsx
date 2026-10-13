@@ -1,6 +1,6 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
-import { FontSize, Palette, Spacing } from './theme';
+import { FontSize, Palette, Spacing } from '../atoms/theme';
 
 export type FilterTabItem<T extends string> = {
   key: T;
