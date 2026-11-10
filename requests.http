@@ -1,0 +1,69 @@
+### Configuración de Variables Básicas
+@hostname = localhost
+@port = 80
+@baseUrl = http://{{hostname}}:{{port}}/api/v1
+
+### 1. Health Check (Verificar Estado)
+# @name health
+GET {{baseUrl}}/health
+Content-Type: application/json
+
+###
+
+### 2. Login (Iniciar Sesión y guardar Token)
+# @name login
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "login": "admin@garrafaya.bo",
+  "password": "GarrafaYa2026!"
+}
+
+### Guardamos el token de la respuesta en una variable dinámica
+@authToken = {{login.response.body.token}}
+
+###
+
+### 3. Consultar Perfil (Verificar Token Automático)
+GET {{baseUrl}}/auth/me
+Authorization: Bearer {{authToken}}
+
+###
+
+### 4. Módulo de Clientes (Prueba de Base de Datos)
+GET {{baseUrl}}/customers
+Authorization: Bearer {{authToken}}
+
+
+
+
+### 5. Crear un Pedido Avanzado con Detalles (Transaccional)
+POST {{baseUrl}}/orders-advanced
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "customer_id": "1",
+  "products": [
+    {
+      "product_id": "1",
+      "quantity": 3,
+      "unit_price": 22.50
+    }
+  ]
+}
+
+###
+
+### 6. Registrar Movimiento de Inventario Avanzado
+POST {{baseUrl}}/inventory-movements-advanced
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "product_id": "1",
+  "warehouse_id": "1",
+  "movement_type": "entry",
+  "quantity": 50
+}
